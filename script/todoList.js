@@ -1,5 +1,5 @@
 'use strict';
-const API_URL = 'http://localhost:3000/todos';
+const API_URL = 'https://heysunny612.github.io/portfolio_js/';
 const $todos = document.querySelector('.todos');
 const $todoForm = document.querySelector('.todo_form');
 const $todoInput = document.querySelector('.todo_input');
