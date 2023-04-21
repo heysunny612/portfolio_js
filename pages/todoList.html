@@ -20,17 +20,16 @@
     <link rel="stylesheet" href="../stylesheet/style.css" />
     <link rel="stylesheet" href="../stylesheet/page.css" />
     <script type="module" src="../script/navigation.js" defer></script>
-    <script type="module" src="../script/app.js" defer></script>
-    <script type="module" src="../script/starRating.js" defer></script>
+    <script src="../script/todoList.js" defer></script>
   </head>
-  <body>
+  <body class="todo-list">
     <div class="wrapper">
       <nav id="navigation">
         <ul class="nav_depth1">
           <li>
-            <a href="../index.html"
-              ><i class="bx bx-home-heart"></i> 메인페이지</a
-            >
+            <a href="../index.html">
+              <i class="bx bx-home-heart"></i> 메인페이지
+            </a>
           </li>
           <li><a href="./pullGame.html">당근 뽑기 게임</a></li>
           <li><a href="./todoList.html">나의 작은 투두 리스트</a></li>
@@ -49,29 +48,48 @@
       </nav>
       <div class="container">
         <div class="common-inner">
-          <h2>Star <em>Rating</em></h2>
-          <div class="star-rating-container">
-            <div class="star-rating" data-max-rating="5"></div>
-            <div class="current-rating">Current Rating: <span>0</span></div>
-          </div>
-          <div class="star-rating-container">
-            <div class="star-rating" data-max-rating="10"></div>
-            <div class="current-rating">Current Rating: <span>0</span></div>
-          </div>
-          <div class="star-rating-container">
-            <div class="star-rating" data-max-rating="5"></div>
-            <div class="current-rating">Current Rating: <span>0</span></div>
-          </div>
-          <div class="star-rating-container">
-            <div class="star-rating" data-max-rating="10"></div>
-            <div class="current-rating">Current Rating: <span>0</span></div>
-          </div>
-          <div class="star-rating-container">
-            <div class="star-rating" data-max-rating="3"></div>
-            <div class="current-rating">Current Rating: <span>0</span></div>
+          <h2>My to-do <em>list</em></h2>
+          <div class="todo-list-area">
+            <div class="todos">
+              <div class="item">
+                <div class="content">
+                  <input type="checkbox" class="todo_checkbox" />
+                  <label>오늘 난 자바스크립트를 했어야해</label>
+                  <input type="text" value="${content}" />
+                </div>
+                <div class="item_buttons content_buttons">
+                  <button class="todo_edit_button">
+                    <i class="bx bxs-edit"></i>
+                  </button>
+                  <button class="todo_remove_button">
+                    <i class="bx bxs-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <form class="todo_form">
+              <input
+                type="text"
+                class="todo_input"
+                placeholder="할 일을 입력해 주세요."
+                autofocus="true"
+              />
+              <button type="submit" class="todo_submit_button">
+                <i class="bx bxs-plus-square"></i>
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </body>
 </html>
+
+<!-- <div class="item_buttons edit_buttons">
+            <button class="todo_edit_confirm_button">
+            <i class="fas fa-check"></i>
+            </button>
+            <button class="todo_edit_cancel_button">
+            <i class="fas fa-times"></i>
+            </button>
+            </div>-->

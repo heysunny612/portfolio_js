@@ -1,3 +1,5 @@
+'use strict';
+
 const body = document.body;
 const toggleBtn = document.querySelector('#ChangeToggle');
 const navigation = document.querySelector('#navigation');
@@ -29,7 +31,7 @@ function openMenu() {
   body.classList.add('preload');
   navigation.classList.add('active');
   setLocalStorage('status', 'open');
-  innerContainer.style.left = '-100px';
+  innerContainer.style.left = '-110px';
 }
 
 function closeMenu() {

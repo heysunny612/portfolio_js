@@ -10,12 +10,14 @@ body {
   display: flex;
   position: relative;
   width: 100%;
+  min-width: 1080px;
   min-height: 100%;
   overflow-x: hidden;
 }
+
 .common-inner {
   position: relative;
-  padding: 5% 10%;
+  padding: 60px 10%;
 }
 
 /*-------------------메인페이지-------------------*/

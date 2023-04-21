@@ -1,3 +1,5 @@
+'use strict';
+
 const CARROT_NUMBER = 10;
 const BUG_NUMBER = 5;
 const CARROT_IMAGE = '../assets/img/carrot.png';

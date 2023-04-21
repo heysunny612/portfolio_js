@@ -1,0 +1,118 @@
+/*-------------------TO-DO LIST-------------------*/
+
+body.todo-list {
+  background-color: $bg-skyblue;
+}
+
+button > i {
+  pointer-events: none;
+}
+.todo-list-area {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 95px 0 85px;
+  width: 780px;
+  height: 520px;
+  background: url(../assets/img/img_ipad.png) no-repeat;
+  background-size: cover;
+
+  .todos {
+    position: relative;
+    overflow: auto;
+    top: 45px;
+    height: 385px;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #f2f2f2;
+    }
+  }
+  .content {
+    line-height: 42px;
+  }
+  .content > input[type='checkbox'] {
+    transform: scale(1.5);
+    margin-left: 10px;
+  }
+
+  .content > label {
+    font-size: 16px;
+    margin-left: 20px;
+    padding-top: 4px;
+    width: 100%;
+  }
+
+  .content > input[type='text'] {
+    font-size: 16px;
+    margin-left: 20px;
+    padding-top: 4px;
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .item_buttons {
+    width: 118px;
+    i {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .item_buttons > button {
+    text-align: center;
+    width: 42px;
+    height: 42px;
+    color: $color-yellow;
+    font-size: 24px;
+    border-radius: 8px;
+  }
+
+  .item_buttons > button:first-child {
+    background-color: $bg-yellow;
+    margin-right: 8px;
+  }
+
+  .todo_checkbox {
+    appearance: auto !important;
+  }
+
+  .item input[type='text'] {
+    display: none;
+  }
+
+  .edit_buttons {
+    display: none;
+  }
+
+  .todo_form {
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 590px;
+    margin-top: 12px;
+
+    .todo_input {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 14px;
+      background-color: #f6f6f6;
+      border-radius: 8px;
+    }
+
+    .todo_submit_button {
+      background-color: $color-blue;
+      color: #fff;
+      width: 80px;
+      margin-left: 10px;
+      font-size: 30px;
+      border-radius: 8px;
+      i {
+        position: relative;
+        top: 3px;
+      }
+    }
+  }
+}
