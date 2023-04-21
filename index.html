@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>What I Made width JS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=block"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./stylesheet/style.css" />
+    <script type="module" src="./script/navigation.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="navigation">
+        <ul class="nav_depth1">
+          <li>
+            <a href="../index.html"
+              ><i class="bx bx-home-heart"></i> 메인페이지</a
+            >
+          </li>
+          <li><a href="./pages/pullGame.html">당근 뽑기 게임</a></li>
+          <li>
+            <a href="#" class="zero">제로베이스 MISSOIN</a>
+            <ul class="nav_depth2">
+              <li><a href="">1.Toggle Side Navigation</a></li>
+              <li><a href="">2.Analog Clock</a></li>
+              <li><a href="./pages/starRating.html">3.Star Rating</a></li>
+              <li><a href="">4.Calendar Datepicker</a></li>
+              <li><a href="">5.News-viewer</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="toggle bx bx-right-arrow-circle" id="ChangeToggle"></i>
+      </nav>
+      <div class="container">
+        <div class="common-inner">
+          <h1>What i made with <em>HTML, CSS, Java Script</em></h1>
+          <ul class="items">
+            <li class="item-list">
+              <a href="./pages/pullGame.html">
+                <span class="icon"><i class="bx bx-play-circle"></i></span>
+                <span class="title">Pull the Carrot Picking Game</span>
+                <span class="description"
+                  >당근과 벌레사이에서 제한 <br />시간내에 당근을 전부 뽑으면
+                  이기는 게임
+                </span>
+                <span class="date">2023.04.14</span>
+                <span class="hover-box"
+                  >Click on the page to play this game</span
+                >
+              </a>
+            </li>
+            <li class="item-list">
+              <a href="#">
+                <span class="icon"><i class="bx bx-menu"></i></span>
+                <span class="title">Toggle Side Navigation</span>
+                <span class="description"
+                  >현재 페이지에서 적용된 네비게이션<br />
+                  (제로베이스 미션과제 1번)</span
+                >
+                <span class="date">2023.04.14</span>
+                <span class="hover-box"
+                  >Just click on the navigation on this page</span
+                >
+              </a>
+            </li>
+            <li class="item-list">
+              <a href="./pages/starRating.html">
+                <span class="icon"><i class="bx bxs-star"></i></span>
+                <span class="title">Star Raiting</span>
+                <span class="description"
+                  >평점을 별점으로 줄 수 있는 별점리뷰<br />
+                  (제로베이스 미션과제 2번)</span
+                >
+                <span class="date">2023.04.20</span>
+                <span class="hover-box">View on the page</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

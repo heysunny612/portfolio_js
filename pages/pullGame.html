@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>What I Made width JS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=block"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheet/style.css" />
+    <script type="module" src="../script/navigation.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/0cdda4eb1e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../script/pullGame.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="navigation">
+        <ul class="nav_depth1">
+          <li>
+            <a href="../index.html"
+              ><i class="bx bx-home-heart"></i> 메인페이지</a
+            >
+          </li>
+          <li><a href="./pullGame.html">당근 뽑기 게임</a></li>
+          <li>
+            <a href="#" class="zero">제로베이스 MISSOIN</a>
+            <ul class="nav_depth2">
+              <li><a href="">1.Toggle Side Navigation</a></li>
+              <li><a href="">2.Analog Clock</a></li>
+              <li><a href="./starRating.html">3.Star Rating</a></li>
+              <li><a href="">4.Calendar Datepicker</a></li>
+              <li><a href="">5.News-viewer</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="toggle bx bx-right-arrow-circle" id="ChangeToggle"></i>
+      </nav>
+      <div class="container">
+        <div class="common-inner">
+          <h2>Click the button to enjoy <em>this GAME!</em></h2>
+          <div class="wrap">
+            <section class="game">
+              <header class="game__header">
+                <button class="game__button">
+                  <i class="fas fa-play"></i>
+                </button>
+                <span class="game__timer">0</span>
+                <span class="game__score"></span>
+              </header>
+              <section class="game__field"></section>
+              <section class="pop-up">
+                <button class="pop-up__refresh">
+                  <i class="fas fa-redo"></i>
+                </button>
+                <span class="pop-up__message">Hello</span>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
