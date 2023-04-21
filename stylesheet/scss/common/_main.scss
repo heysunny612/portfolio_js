@@ -64,6 +64,36 @@ body {
           transform: translateY(0);
         }
       }
+      .skill {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        span {
+          margin-bottom: 3px;
+          padding: 5px;
+          border-radius: 5px;
+          font-size: 12px;
+          font-weight: bold;
+          &.date {
+            color: $color-pink;
+            background-color: $bg-pink;
+          }
+          &.html {
+            color: $color-skyblue;
+            background-color: $bg-skyblue;
+          }
+          &.css {
+            color: $color-green;
+            background-color: $bg-green;
+          }
+          &.js {
+            color: $color-yellow;
+            background-color: $bg-yellow;
+          }
+        }
+      }
       span {
         display: block;
         letter-spacing: -0.8;
@@ -81,17 +111,7 @@ body {
           line-height: 30px;
           font-size: 16px;
         }
-        &.date {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          padding: 5px;
-          border-radius: 5px;
-          background-color: #ffe5f4;
-          color: $color-pink;
-          font-size: 12px;
-          font-weight: bold;
-        }
+
         &.hover-box {
           display: flex;
           align-items: center;
