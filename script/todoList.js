@@ -1,66 +1,73 @@
 'use strict';
-const API_URL = 'https://heysunny612.github.io/portfolio_js/';
-const $todos = document.querySelector('.todos');
-const $todoForm = document.querySelector('.todo_form');
-const $todoInput = document.querySelector('.todo_input');
+const todoForm = document.querySelector('.todo_form');
+const todos = document.querySelector('.todos');
+const todoInput = document.querySelector('.todo_input');
+const todoRemoveBtn = document.querySelector('.todo_remove_button');
+const todoEditBtn = document.querySelector('.todo_edit_button');
 
-const createTodosElement = (todos) => {
-  todos.forEach((todo) => {
-    const $item = document.createElement('div');
-    $item.classList.add('item');
-    $item.dataset.id = `${todo.id}`;
-    $item.innerHTML = ` 
-      <div class='content'>
-        <input type='checkbox' class='todo_checkbox' />
-        <label>${todo.content}</label>
-        <input type='text' value='' />
-      </div>
-      <div class='item_buttons content_buttons'>
-        <button class='todo_edit_button'>
-          <i class='bx bxs-edit'></i>
-        </button>
-        <button class='todo_remove_button'>
-          <i class='bx bxs-trash'></i>
-        </button>
-      </div>
-      <div class='item_buttons edit_buttons'>
-        <button class='todo_edit_confirm_button'>
-          <i class='fas fa-check'></i>
-        </button>
-        <button class='todo_edit_cancel_button'>
-          <i class='fas fa-times'></i>
-        </button>
-      </div>
-    `;
-    $todos.appendChild($item);
-  });
-};
+const TODOS_KEY = 'todos';
+let todosItems = [];
 
-const getTodos = () => {
-  fetch(API_URL)
-    .then((response) => response.json())
-    .then((todos) => createTodosElement(todos))
-    .catch((error) => console.log(error));
-};
-
-const addTodo = (event) => {
+todoForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const todo = {
-    content: $todoInput.value,
-    completed: false,
+  const newTodo = todoInput.value;
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(), //랜덤한숫자
   };
-  fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(todo),
-  });
-};
+  todosItems.push(newTodoObj);
+  createTodo(newTodoObj);
+  saveTodos();
+});
 
-const init = () => {
-  getTodos();
-  $todoForm.addEventListener('submit', addTodo);
-};
+todos.addEventListener('click', (event) => {
+  deleteTodo(event);
+  //editTodo(event);
+});
 
-init();
+function saveTodos() {
+  localStorage.setItem(TODOS_KEY, JSON.stringify(todosItems));
+}
+
+const getSavedTodos = localStorage.getItem(TODOS_KEY);
+
+if (getSavedTodos) {
+  const parseTodos = JSON.parse(getSavedTodos);
+  todosItems = parseTodos;
+  todosItems.forEach(createTodo);
+}
+
+function createTodo(newTodo) {
+  const item = document.createElement('li');
+  item.dataset.id = newTodo.id;
+  item.className = 'item';
+  item.innerHTML = `
+  <div class="content">
+    <input type="checkbox" class="todo_checkbox" />
+    <label>${newTodo.text}</label>
+    <input type="text" value="" />
+  </div>
+  <div class="item_buttons content_buttons">
+    <button class="todo_edit_button">
+      <i class="bx bxs-edit"></i>
+    </button>
+    <button class="todo_remove_button">
+      <i class="bx bxs-trash"></i>
+    </button>
+  </div>`;
+  todos.appendChild(item);
+  todoInput.value = '';
+  todoInput.focus();
+}
+
+function deleteTodo(event) {
+  const target = event.target;
+  const btnContainer = target.parentElement;
+  const item = btnContainer.parentElement;
+  if (!target.matches('.todo_remove_button')) return;
+  item.remove();
+  todosItems = todosItems.filter(
+    (todoItem) => todoItem.id !== parseInt(item.dataset.id)
+  );
+  saveTodos(todosItems);
+}
