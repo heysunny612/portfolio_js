@@ -1,73 +1,146 @@
 'use strict';
+
 const todoForm = document.querySelector('.todo_form');
+const todoInput = todoForm.querySelector('.todo_input');
+const todoIntro = document.querySelector('.todo-intro');
 const todos = document.querySelector('.todos');
-const todoInput = document.querySelector('.todo_input');
-const todoRemoveBtn = document.querySelector('.todo_remove_button');
-const todoEditBtn = document.querySelector('.todo_edit_button');
 
-const TODOS_KEY = 'todos';
-let todosItems = [];
+let saveTodos = [];
 
-todoForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const newTodo = todoInput.value;
-  const newTodoObj = {
-    text: newTodo,
-    id: Date.now(), //랜덤한숫자
-  };
-  todosItems.push(newTodoObj);
-  createTodo(newTodoObj);
-  saveTodos();
-});
-
+//CLICK EVENT
 todos.addEventListener('click', (event) => {
-  deleteTodo(event);
-  //editTodo(event);
+  const target = event.target;
+
+  if (target.matches('.todo_remove_button')) {
+    deleteTodoList(target);
+  } else if (
+    target.matches('.todo_edit_button') ||
+    target.matches('.todo_edit_confirm_button') ||
+    target.matches('.todo_edit_cancel_button')
+  ) {
+    editTodoList(target);
+  } else {
+    return;
+  }
 });
 
-function saveTodos() {
-  localStorage.setItem(TODOS_KEY, JSON.stringify(todosItems));
-}
+//FORM SUBMIT EVENT
+todoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  //랜덤아이디 만들기
+  const objTodos = {
+    id: Date.now(),
+    todo: todoInput.value,
+  };
+  saveTodos.push(objTodos);
+  createTodoElements(objTodos);
+  saveTodo(objTodos);
+});
 
-const getSavedTodos = localStorage.getItem(TODOS_KEY);
-
+//새로고침시 값 가져오기
+const getSavedTodos = localStorage.getItem('todos');
 if (getSavedTodos) {
   const parseTodos = JSON.parse(getSavedTodos);
-  todosItems = parseTodos;
-  todosItems.forEach(createTodo);
+  saveTodos = parseTodos;
+  saveTodos.forEach(createTodoElements);
 }
 
-function createTodo(newTodo) {
-  const item = document.createElement('li');
-  item.dataset.id = newTodo.id;
-  item.className = 'item';
-  item.innerHTML = `
-  <div class="content">
-    <input type="checkbox" class="todo_checkbox" />
-    <label>${newTodo.text}</label>
-    <input type="text" value="" />
-  </div>
-  <div class="item_buttons content_buttons">
-    <button class="todo_edit_button">
-      <i class="bx bxs-edit"></i>
-    </button>
-    <button class="todo_remove_button">
-      <i class="bx bxs-trash"></i>
-    </button>
-  </div>`;
-  todos.appendChild(item);
+//새로고침시, 값 저장
+function saveTodo() {
+  localStorage.setItem('todos', JSON.stringify(saveTodos));
+}
+
+//투두 리스트 DOM 만들기
+function createTodoElements(Todos) {
+  const { id, todo } = Todos;
+  const todoList = document.createElement('li');
+  todoList.dataset.id = id;
+  todoList.classList.add('item');
+  todoList.innerHTML = `
+    <div class="content">
+      <label class="todo_label">${todo}</label>
+      <input type="text" value="${todo}" class="todo_input" />
+    </div>
+    <div class="item_buttons content_buttons">
+      <button class="todo_edit_button">
+        <i class="bx bxs-edit"></i>
+      </button>
+      <button class="todo_remove_button">
+        <i class="bx bxs-trash"></i>
+      </button>
+    </div>
+    <div class="item_buttons edit_buttons">
+      <button class="todo_edit_confirm_button">
+        <i class="bx bx-check-circle"></i>
+      </button>
+      <button class="todo_edit_cancel_button">
+        <i class="bx bxs-x-circle"></i>
+      </button>
+    </div>  
+  `;
+  todos.appendChild(todoList);
   todoInput.value = '';
   todoInput.focus();
 }
 
-function deleteTodo(event) {
-  const target = event.target;
-  const btnContainer = target.parentElement;
-  const item = btnContainer.parentElement;
-  if (!target.matches('.todo_remove_button')) return;
-  item.remove();
-  todosItems = todosItems.filter(
-    (todoItem) => todoItem.id !== parseInt(item.dataset.id)
-  );
-  saveTodos(todosItems);
+//투두 삭제
+function deleteTodoList(deleteBtn) {
+  const currentTodoList = deleteBtn.parentElement.parentElement;
+  currentTodoList.remove();
+
+  saveTodos = saveTodos.filter((saveTodo) => {
+    return saveTodo.id !== parseInt(currentTodoList.dataset.id);
+  });
+  saveTodo(saveTodos);
+}
+
+//투두 수정
+function editTodoList(editBtn) {
+  const currentTodoList = editBtn.closest('.item');
+  const id = currentTodoList.dataset.id;
+  const todoLable = currentTodoList.querySelector('.todo_label');
+  const todoInput = currentTodoList.querySelector('.todo_input');
+  const todoValue = todoInput.value;
+  const contentBtns = currentTodoList.querySelector('.content_buttons');
+  const editBtns = currentTodoList.querySelector('.edit_buttons');
+
+  if (editBtn.className == 'todo_edit_button') {
+    todoLable.style.display = 'none';
+    todoInput.style.display = 'block';
+    contentBtns.style.display = 'none';
+    editBtns.style.display = 'block';
+    todoInput.focus();
+    todoInput.value = '';
+    todoInput.value = todoValue;
+  } else if (
+    editBtn.className == 'todo_edit_confirm_button' ||
+    editBtn.className == 'todo_edit_cancel_button'
+  ) {
+    todoLable.style.display = 'block';
+    todoInput.style.display = 'none';
+    contentBtns.style.display = 'block';
+    editBtns.style.display = 'none';
+
+    if (editBtn.className == 'todo_edit_confirm_button') {
+      const newValue = todoInput.value;
+      const newTodoObj = {
+        id: parseInt(id),
+        todo: newValue,
+      };
+      updateTodo(newTodoObj);
+    }
+  }
+}
+
+//수정된 값 UPDATE
+function updateTodo(newTodo) {
+  const item = document.querySelector('.todos');
+  item.innerHTML = '';
+  saveTodos.forEach((saveTodo) => {
+    if (saveTodo.id == newTodo.id && saveTodo.todo !== newTodo.todo) {
+      saveTodo.todo = newTodo.todo;
+    }
+    createTodoElements(saveTodo);
+  });
+  saveTodo(saveTodos);
 }

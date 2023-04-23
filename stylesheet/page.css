@@ -178,6 +178,25 @@ button > i {
   background: url(../assets/img/img_ipad.png) no-repeat;
   background-size: cover;
 }
+.todo-list-area .todo-intro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -60%);
+  font-size: 54px;
+  text-align: center;
+  line-height: 75px;
+  color: #000;
+  opacity: 0.1;
+}
+.todo-list-area .todo-intro em {
+  color: #e50087;
+}
+.todo-list-area .todo-intro span {
+  display: inline-block;
+  font-size: 30px;
+}
 .todo-list-area .todos {
   position: relative;
   overflow: auto;
@@ -189,26 +208,37 @@ button > i {
   justify-content: space-between;
   padding: 5px 0;
   border-bottom: 1px solid #f2f2f2;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .todo-list-area .content {
+  position: relative;
+  width: 430px;
+  height: 42px;
   line-height: 42px;
 }
-.todo-list-area .content > input[type=checkbox] {
-  transform: scale(1.5);
-  margin-left: 10px;
-}
 .todo-list-area .content > label {
+  position: absolute;
+  top: 0px;
+  left: 20px;
   font-size: 16px;
-  margin-left: 20px;
-  padding-top: 4px;
   width: 100%;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.todo-list-area .content > input[type=text] {
+.todo-list-area .item input[type=text] {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  display: none;
+  border: 0 none;
+  outline: none;
   font-size: 16px;
-  margin-left: 20px;
-  padding-top: 4px;
-  padding-left: 0;
+  letter-spacing: -1.2px;
   width: 100%;
+  font-weight: bold;
+  color: #e50087;
 }
 .todo-list-area .item_buttons {
   width: 118px;
@@ -228,12 +258,6 @@ button > i {
 .todo-list-area .item_buttons > button:first-child {
   background-color: #fdf3ce;
   margin-right: 8px;
-}
-.todo-list-area .todo_checkbox {
-  appearance: auto !important;
-}
-.todo-list-area .item input[type=text] {
-  display: none;
 }
 .todo-list-area .edit_buttons {
   display: none;
