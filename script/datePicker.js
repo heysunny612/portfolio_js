@@ -49,7 +49,7 @@ const onClickDay = (days) => {
         ${currYear} 년  
         ${currMonth + 1} 월
         ${index + 1} 일
-         `;
+        `;
     });
   });
 };

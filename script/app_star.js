@@ -1,4 +1,4 @@
-import StarRating from './starRating.js';
+import StarRating from './components/star/starRating.js';
 
 const $containers = [...document.querySelectorAll('.star-rating')];
 const $currentRatings = document.querySelectorAll('.current-rating > span');

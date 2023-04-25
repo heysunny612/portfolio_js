@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>What I Made width JS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=block"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheet/style.css" />
+    <link rel="stylesheet" href="../stylesheet/page.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="../script/navigation.js" defer></script>
+    <script src="../script/app_news.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="navigation">
+        <ul class="nav_depth1">
+          <li>
+            <a href="../index.html">
+              <i class="bx bx-home-heart"></i> 메인페이지
+            </a>
+          </li>
+          <li><a href="./pullGame.html">당근 뽑기 게임</a></li>
+          <li><a href="./todoList.html">나의 작은 투두 리스트</a></li>
+          <li>
+            <a href="#" class="zero">제로베이스 MISSOIN</a>
+            <ul class="nav_depth2">
+              <li><a href="./toggleNav.html">1.Toggle Side Navigation</a></li>
+              <li><a href="./analogClock.html">2.Analog Clock</a></li>
+              <li><a href="./starRating.html">3.Star Rating</a></li>
+              <li><a href="./datePicker.html">4.Calendar Datepicker</a></li>
+              <li><a href="./newsViewer.html">5.News-viewer</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="toggle bx bx-right-arrow-circle" id="ChangeToggle"></i>
+      </nav>
+      <div class="container">
+        <div class="common-inner">
+          <h2>NEWS <em>Viewer</em></h2>
+
+          <div id="root">
+            <!-- App.js가 Nav/NewsList 컴포넌트를 사용해 동적으로 생성한다. -->
+            <!-- Nav 컴포넌트 -->
+          
+            <nav class="category-list">
+              <ul>
+                <li id="all" class="category-item active">전체보기</li>
+                <li id="business" class="category-item">비즈니스</li>
+                <li id="entertainment" class="category-item">엔터테인먼트</li>
+                <li id="health" class="category-item">건강</li>
+                <li id="science" class="category-item">과학</li>
+                <li id="sports" class="category-item">스포츠</li>
+                <li id="technology" class="category-item">기술</li>
+              </ul>
+            </nav>
+            <!-- NewsList 컴포넌트 -->      
+            <div class="news-list-container">    
+             
+            </div> 
+            <div class="scroll-observer">
+              <img src="../assets/img/ball-triangle.svg" alt="Loading..." />
+            </div>           
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
