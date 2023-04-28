@@ -38,22 +38,6 @@ calendar.addEventListener('click', (event) => {
   }
 });
 
-// 날짜 클릭시 선택한날 가져오기
-const onClickDay = (days) => {
-  days.forEach((day, index) => {
-    day.addEventListener('click', () => {
-      days.forEach((day) => day.classList.remove('selected'));
-      day.classList.add('selected');
-      selectedDay.innerHTML = `
-        <span class="txt">선택된 날 : </span> 
-        ${currYear} 년  
-        ${currMonth + 1} 월
-        ${index + 1} 일
-        `;
-    });
-  });
-};
-
 const onPrevYear = () => {
   currYear--;
   createCalendar(currMonth, currYear);
@@ -125,6 +109,7 @@ const createCalendar = (month, year) => {
   //날짜를 몇개 만들것인지에 대한 반복문
   for (let i = 0; i <= daysOfMonth[month] + emptyDay; i++) {
     const day = document.createElement('li');
+    day.dataset.id = i;
     if (i >= firstDay.getDay()) {
       day.classList.add('day');
       day.innerHTML = `${i - firstDay.getDay() + 1}
@@ -144,7 +129,26 @@ const createCalendar = (month, year) => {
     calendarDays.appendChild(day);
   }
   const $days = document.querySelectorAll('.day');
-  onClickDay($days);
+
+  $days.forEach((day, index) =>
+    day.addEventListener('click', () => {
+      onClickDay(index);
+    })
+  );
+  //onClickDay($days);
 };
+
+// 날짜 클릭시 선택한날 가져오기
+function onClickDay(index) {
+  const originalSeleted = document.querySelectorAll('.selected')?.[0];
+  originalSeleted?.classList.remove('selected');
+  event.target.classList.add('selected');
+  selectedDay.innerHTML = `
+        <span class="txt">선택된 날 : </span> 
+        ${currYear} 년  
+        ${currMonth + 1} 월
+        ${index + 1} 일
+    `;
+}
 
 createCalendar(currMonth, currYear);
