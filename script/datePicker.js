@@ -162,22 +162,25 @@ const createCalendar = (month, year) => {
   //onClickDay($days);
 };
 
+let clicked = false;
 // 날짜 클릭시 선택한날 가져오기
 function onClickDay(index) {
   const originalSeleted = document.querySelectorAll('.selected')?.[0];
   originalSeleted?.classList.remove('selected');
   event.target.classList.add('selected');
-
+  calendar.classList.add('hide');
   btnCalendar.innerHTML = `
         <span class="txt">선택된 날 : </span> 
         ${currYear} 년  
         ${currMonth + 1} 월
         ${index + 1} 일
     `;
+
+  return (clicked = false);
 }
 
 //캘린더 픽커 버튼 클릭
-let clicked = false;
+
 btnCalendar.onclick = () => {
   if (clicked) {
     calendar.classList.add('hide');

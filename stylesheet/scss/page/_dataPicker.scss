@@ -146,10 +146,6 @@
           font-weight: bold;
           border-radius: 50%;
         }
-        &.notCurrDay {
-          color: rgb(170, 170, 170);
-        }
-
         &:nth-child(7n) {
           color: $color-blue;
         }
@@ -158,6 +154,7 @@
         }
         &.notCurrDay {
           color: rgb(170, 170, 170);
+          cursor: not-allowed;
         }
         span {
           position: absolute;

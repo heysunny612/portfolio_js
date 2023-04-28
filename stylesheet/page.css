@@ -430,9 +430,6 @@ button > i {
   font-weight: bold;
   border-radius: 50%;
 }
-.calendar .calendar-body .calendar-days li.notCurrDay {
-  color: rgb(170, 170, 170);
-}
 .calendar .calendar-body .calendar-days li:nth-child(7n) {
   color: #0066ff;
 }
@@ -441,6 +438,7 @@ button > i {
 }
 .calendar .calendar-body .calendar-days li.notCurrDay {
   color: rgb(170, 170, 170);
+  cursor: not-allowed;
 }
 .calendar .calendar-body .calendar-days li span {
   position: absolute;
