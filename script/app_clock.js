@@ -1,3 +1,9 @@
-import AnalogClock from './AnalogClock.js';
+import { AnalogClock } from './AnalogClock.js';
 
-document.querySelectorAll('.analog-clock').forEach(AnalogClock);
+const analogClockDOM = document.querySelectorAll('.analog-clock');
+
+analogClockDOM.forEach(AnalogClock);
+
+setInterval(function () {
+  AnalogClock();
+}, 1000);
