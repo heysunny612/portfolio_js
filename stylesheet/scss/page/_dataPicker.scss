@@ -10,6 +10,25 @@
   }
 }
 
+.calendar-picker {
+  margin-bottom: 5px;
+  text-align: center;
+  button {
+    width: 600px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 18px;
+    background-color: $color-green;
+    color: $bg-pink;
+    font-weight: bold;
+    border: 0 none;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+  }
+  i {
+    font-size: 24px;
+  }
+}
+
 .calendar {
   position: relative;
   margin: 0 auto;
@@ -19,6 +38,10 @@
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+
+  &.hide {
+    display: none;
+  }
 
   //캘린더 해더
   .calendar-header {
@@ -123,11 +146,18 @@
           font-weight: bold;
           border-radius: 50%;
         }
+        &.notCurrDay {
+          color: rgb(170, 170, 170);
+        }
+
         &:nth-child(7n) {
           color: $color-blue;
         }
         &:nth-child(7n + 1) {
           color: $color-pink;
+        }
+        &.notCurrDay {
+          color: rgb(170, 170, 170);
         }
         span {
           position: absolute;

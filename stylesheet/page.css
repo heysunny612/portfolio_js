@@ -302,6 +302,25 @@ button > i {
     opacity: 1;
   }
 }
+.calendar-picker {
+  margin-bottom: 5px;
+  text-align: center;
+}
+.calendar-picker button {
+  width: 600px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 18px;
+  background-color: #14b789;
+  color: #ffe5f4;
+  font-weight: bold;
+  border: 0 none;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+}
+.calendar-picker i {
+  font-size: 24px;
+}
+
 .calendar {
   position: relative;
   margin: 0 auto;
@@ -311,6 +330,9 @@ button > i {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+}
+.calendar.hide {
+  display: none;
 }
 .calendar .calendar-header {
   display: flex;
@@ -408,11 +430,17 @@ button > i {
   font-weight: bold;
   border-radius: 50%;
 }
+.calendar .calendar-body .calendar-days li.notCurrDay {
+  color: rgb(170, 170, 170);
+}
 .calendar .calendar-body .calendar-days li:nth-child(7n) {
   color: #0066ff;
 }
 .calendar .calendar-body .calendar-days li:nth-child(7n+1) {
   color: #e50087;
+}
+.calendar .calendar-body .calendar-days li.notCurrDay {
+  color: rgb(170, 170, 170);
 }
 .calendar .calendar-body .calendar-days li span {
   position: absolute;
